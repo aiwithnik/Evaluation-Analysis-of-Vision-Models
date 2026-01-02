@@ -1,0 +1,19 @@
+# src/config/config.yaml
+
+project:
+  name: vehicle-image-classification
+  experiment_name: baseline_run
+
+random_seed: 42
+
+data_split:
+  train_size: 0.7
+  val_size: 0.15
+  test_size: 0.15
+
+logging:
+  level: INFO
+  save_logs: true
+
+runtime:
+  device: cpu   # cpu | cuda

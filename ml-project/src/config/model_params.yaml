@@ -1,0 +1,23 @@
+# src/config/model_params.yaml
+
+model:
+  name: simple_cnn   # or resnet18, mobilenet, etc.
+
+training:
+  epochs: 10
+  batch_size: 32
+  learning_rate: 0.001
+
+optimizer:
+  type: adam
+  weight_decay: 0.0001
+
+loss:
+  type: cross_entropy
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1

@@ -1,0 +1,13 @@
+data:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+
+models:
+  root: models
+
+reports:
+  root: reports
+
+logs:
+  root: logs
