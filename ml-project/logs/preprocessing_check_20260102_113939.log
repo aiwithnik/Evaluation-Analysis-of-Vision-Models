@@ -1,0 +1,3 @@
+2026-01-02 11:39:39,776 | INFO | preprocessing_check | Starting preprocessing pipeline check
+2026-01-02 11:39:39,778 | INFO | preprocessing_check | Configs loaded successfully
+2026-01-02 11:39:39,779 | INFO | preprocessing_check | Raw data path located: data/raw/Vehicles

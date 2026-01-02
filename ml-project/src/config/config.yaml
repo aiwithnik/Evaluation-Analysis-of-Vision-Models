@@ -1,8 +1,6 @@
-# src/config/config.yaml
-
 project:
-  name: vehicle-image-classification
-  experiment_name: baseline_run
+  name: vision-model-evaluation
+  experiment_name: preprocessing_check
 
 random_seed: 42
 
@@ -13,7 +11,3 @@ data_split:
 
 logging:
   level: INFO
-  save_logs: true
-
-runtime:
-  device: cpu   # cpu | cuda

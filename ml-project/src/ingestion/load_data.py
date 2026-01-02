@@ -9,16 +9,12 @@ from src.config import load_yaml, PATHS_YAML
 
 
 def get_raw_data_path():
-    """
-    Returns the path to the raw dataset directory.
-
-    Raises an error if the dataset does not exist.
-    """
-
     paths = load_yaml(PATHS_YAML)
-    raw_root = Path(paths["data"]["raw"])
 
-    dataset_path = raw_root / "vehicle-classification"
+    raw_root = Path(paths["data"]["raw"])
+    dataset_name = paths["data"]["raw_dataset_name"]
+
+    dataset_path = raw_root / dataset_name
 
     if not dataset_path.exists():
         raise FileNotFoundError(

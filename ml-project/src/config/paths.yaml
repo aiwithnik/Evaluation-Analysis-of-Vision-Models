@@ -1,5 +1,6 @@
 data:
   raw: data/raw
+  raw_dataset_name: Vehicles
   interim: data/interim
   processed: data/processed
 

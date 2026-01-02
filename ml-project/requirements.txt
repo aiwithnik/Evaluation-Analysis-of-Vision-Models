@@ -1,0 +1,17 @@
+# Core Python utilities
+numpy>=1.26
+pyyaml>=6.0
+
+# Image processing
+pillow>=10.0
+
+# ML utilities
+scikit-learn>=1.4
+
+# Deep learning (CPU only)
+torch>=2.2
+torchvision>=0.17
+torchaudio>=2.2
+
+# Logging & progress (optional but useful)
+tqdm>=4.66
