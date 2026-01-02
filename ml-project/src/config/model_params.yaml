@@ -1,12 +1,13 @@
-# src/config/model_params.yaml
-
 model:
-  name: simple_cnn   # or resnet18, mobilenet, etc.
+  name: efficientnet_b0
+  pretrained: true
+  freeze_backbone: true
 
 training:
   epochs: 10
-  batch_size: 32
+  batch_size: 16
   learning_rate: 0.001
+  device: cpu   # change to cuda later if available
 
 optimizer:
   type: adam
@@ -18,6 +19,3 @@ loss:
 evaluation:
   metrics:
     - accuracy
-    - precision
-    - recall
-    - f1
