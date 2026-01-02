@@ -1,7 +1,7 @@
-from .rbg_converter import rgb_converter
+from .rbg_converter import convert_grayscale_to_rgb
 from .normalize import normalize_and_save
 
 __all__ = [
-    "rgb_converter",
+    "convert_grayscale_to_rgb",
     "normalize_and_save",
 ]

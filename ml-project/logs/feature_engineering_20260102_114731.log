@@ -1,0 +1,5 @@
+2026-01-02 11:47:31,179 | INFO | feature_engineering | Starting feature engineering pipeline
+2026-01-02 11:47:31,181 | INFO | feature_engineering | Loading interim data from: data/interim
+2026-01-02 11:47:39,109 | INFO | feature_engineering | Grayscale to RGB conversion completed
+2026-01-02 11:49:12,445 | INFO | feature_engineering | Normalization and tensor saving completed
+2026-01-02 11:49:12,610 | INFO | feature_engineering | Feature engineering completed successfully
