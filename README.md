@@ -51,3 +51,35 @@ Evaluation-Analysis-of-Vision-Models/
 ├── run_pipeline.py       # Automate the whole pipeline
 └── README.md
 ```
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python **3.8 or higher**
+- `pip`
+- Git
+
+---
+
+## 📦 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/aiwithnik/Evaluation-Analysis-of-Vision-Models.git
+cd Evaluation-Analysis-of-Vision-Models
+```
+### 2. Create a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux / macOS
+venv\Scripts\activate         # Windows
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
