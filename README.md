@@ -57,24 +57,51 @@ evaluating computer vision models under **real-world uncertainty**.
 ## 📁 Project Structure
 
     Evaluation-Analysis-of-Vision-Models/
-    ├── assets/
-    ├── configs/
-    │   ├── paths.yaml
-    │   ├── model_params.yaml
-    │   └── experiment.yaml
+    ├── .venv/
     ├── data/
-    │   ├── train/
-    │   ├── val/
-    │   └── test/
+    │   ├── raw/
+    │   ├── processed/
+    │   ├── interim/
+    │   └── external/
+    |
+    ├── experiments/
+    │   ├── exp001/
+    |       ├── logs/
+    |       ├── metrics.json
+    |       └── metadata.json
+    |
+    ├── logs/
+    |
+    ├── model/
+    │   ├── registry/
+    |       ├── v001/
+    |          ├── model.pt
+    |          └── metadata.json
+    |
     ├── src/
     │   ├── config/
+    |   ├── ingestion/
     │   ├── models/
     │   ├── evaluation/
-    │   ├── perturbations/
+    │   ├── feature/
+    |   ├── preprocess/
+    |   ├── pipeline/
     │   ├── utils/
-    │   └── evaluator.py
+    │   └── __init__.py
+    |
     ├── reports/
-    ├── logs/
+    |
+    ├── tests/
+    │   ├── ingestion/
+    │   ├── evaluation/
+    │   ├── degradation/
+    │   ├── scenarios/
+    │   ├── utils/
+    |   ├── composite.py
+    |   ├── __init__.py
+    │   └── run_experiment.py
+    |
+    ├── run_pipeline.py
     ├── requirements.txt
     ├── .gitignore
     └── README.md
@@ -100,7 +127,7 @@ evaluating computer vision models under **real-world uncertainty**.
 
 ### ▶️ Run the Evaluator
 
-    python src/evaluator.py --config configs/experiment.yaml
+    python -m run_pipeline.py --config configs/model_params.yaml
 
 ## 🧪 Experiments Checklist
 
@@ -148,6 +175,5 @@ evaluating computer vision models under **real-world uncertainty**.
 > Accuracy answers *"how often"*\
 > Evaluation answers *"when, where, and why"*
 
-Built as a research playground for understanding model behavior under
-uncertainty.
+Built as a research playground for understanding model behavior under uncertainty.
 
