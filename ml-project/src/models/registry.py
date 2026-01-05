@@ -12,7 +12,7 @@ from datetime import datetime
 import torch
 
 
-REGISTRY_ROOT = Path("models/registry")
+REGISTRY_ROOT = Path("model/registry")
 
 
 def _get_next_version():
@@ -75,3 +75,59 @@ def save_model(
     latest_path.symlink_to(version_dir)
 
     return version
+
+def load_model(model, version="latest"):
+    """
+    Load model weights from the registry.
+    Robust to empty or broken 'latest' directories.
+    """
+
+    # Collect all valid version directories that contain model.pt
+    version_dirs = sorted(
+        [
+            p for p in REGISTRY_ROOT.glob("v*")
+            if p.is_dir() and (p / "model.pt").exists()
+        ]
+    )
+
+    if not version_dirs:
+        raise FileNotFoundError(
+            f"No valid model.pt found in registry: {REGISTRY_ROOT}"
+        )
+
+    if version == "latest":
+        # Prefer latest symlink if valid
+        latest_path = REGISTRY_ROOT / "latest" / "model.pt"
+        if latest_path.exists():
+            model_path = latest_path
+        else:
+            # Fallback to highest version
+            model_path = version_dirs[-1] / "model.pt"
+    else:
+        model_path = REGISTRY_ROOT / version / "model.pt"
+        if not model_path.exists():
+            raise FileNotFoundError(f"Model not found at {model_path}")
+
+    state_dict = torch.load(model_path, map_location="cpu")
+    model.load_state_dict(state_dict)
+
+    return model
+
+    """
+    Load model weights from the registry.
+    """
+
+    if version == "latest":
+        version_dir = REGISTRY_ROOT / "latest"
+    else:
+        version_dir = REGISTRY_ROOT / version
+
+    model_path = version_dir / "model.pt"
+
+    if not model_path.exists():
+        raise FileNotFoundError(f"Model not found at {model_path}")
+
+    state_dict = torch.load(model_path, map_location="cpu")
+    model.load_state_dict(state_dict)
+
+    return model

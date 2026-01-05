@@ -1,6 +1,7 @@
 # Core Python utilities
 numpy>=1.26
 pyyaml>=6.0
+matplotlib>=3.8
 
 # Image processing
 pillow>=10.0

@@ -5,7 +5,7 @@ data:
   processed: data/processed
 
 models:
-  root: models
+  root: model/registry
 
 reports:
   root: reports
