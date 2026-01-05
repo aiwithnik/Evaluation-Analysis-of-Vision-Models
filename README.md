@@ -1,18 +1,12 @@
-::: container
-::: center
-![Project Logo](assets/logo.png){.logo}
-
 # 🔍 Evaluation & Analysis of Vision Models
 
 **Understanding why vision models fail --- not just how often.**
 
-::: badges
+
 ![](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![](https://img.shields.io/badge/Framework-PyTorch-red.svg)
 ![](https://img.shields.io/badge/Focus-Model%20Evaluation-orange.svg)
 ![](https://img.shields.io/badge/Status-Research%20Playground-green.svg)
-:::
-:::
 
 ## 🧠 Project Overview
 
@@ -27,7 +21,7 @@ evaluating computer vision models under **real-world uncertainty**.
 
 ## 🚀 Getting Started
 
-::: card
+
 ### Prerequisites
 
 -   Python 3.8+
@@ -38,7 +32,7 @@ evaluating computer vision models under **real-world uncertainty**.
 
 ## 📦 Installation
 
-::: card
+
 ### 1️⃣ Clone the repository
 
     git clone https://github.com/aiwithnik/Evaluation-Analysis-of-Vision-Models.git
@@ -59,8 +53,7 @@ evaluating computer vision models under **real-world uncertainty**.
 ### 3️⃣ Install dependencies
 
     pip install -r requirements.txt
-:::
-
+    
 ## 📁 Project Structure
 
     Evaluation-Analysis-of-Vision-Models/
@@ -88,7 +81,7 @@ evaluating computer vision models under **real-world uncertainty**.
 
 ## ⚡ Usage
 
-::: card
+
 ### 🔧 Configure an Experiment
 
     model:
@@ -108,7 +101,6 @@ evaluating computer vision models under **real-world uncertainty**.
 ### ▶️ Run the Evaluator
 
     python src/evaluator.py --config configs/experiment.yaml
-:::
 
 ## 🧪 Experiments Checklist
 
@@ -158,4 +150,4 @@ evaluating computer vision models under **real-world uncertainty**.
 
 Built as a research playground for understanding model behavior under
 uncertainty.
-:::
+
