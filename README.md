@@ -1,47 +1,98 @@
+::: container
+::: center
+![Project Logo](assets/logo.png){.logo}
+
 # 🔍 Evaluation & Analysis of Vision Models
 
-A structured experimental framework to **evaluate computer vision models
-under real-world uncertainty**, including noise, blur, confidence
-calibration, and out-of-distribution behavior.
+**Understanding why vision models fail --- not just how often.**
 
-This project is designed as a **learning-focused research playground**
-for understanding *why models fail*, not just how accurate they are.
+::: badges
+![](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![](https://img.shields.io/badge/Framework-PyTorch-red.svg)
+![](https://img.shields.io/badge/Focus-Model%20Evaluation-orange.svg)
+![](https://img.shields.io/badge/Status-Research%20Playground-green.svg)
+:::
+:::
+
+## 🧠 Project Overview
+
+This repository is a **learning-focused experimental framework** for
+evaluating computer vision models under **real-world uncertainty**.
+
+-   Noise & blur robustness
+-   Confidence calibration
+-   Failure mode analysis
+-   Out-of-distribution (OOD) behavior
+-   Model uncertainty & misconfidence
 
 ## 🚀 Getting Started
 
+::: card
 ### Prerequisites
 
--   Python 3.8 or higher
+-   Python 3.8+
 -   pip
 -   Git
+-   Optional: CUDA-enabled GPU
+:::
 
 ## 📦 Installation
 
-### 1. Clone the repository
+::: card
+### 1️⃣ Clone the repository
 
     git clone https://github.com/aiwithnik/Evaluation-Analysis-of-Vision-Models.git
     cd Evaluation-Analysis-of-Vision-Models
 
-
-### 2. Create a virtual environment
+### 2️⃣ Create a virtual environment
 
     python -m venv venv
-    source venv/bin/activate      # Linux / macOS
-    venv\Scripts\activate         # Windows
 
-### 3. Install dependencies
+### Activate it
+
+    # Linux / macOS
+    source venv/bin/activate
+
+    # Windows
+    venv\Scripts\activate
+
+### 3️⃣ Install dependencies
 
     pip install -r requirements.txt
+:::
+
+## 📁 Project Structure
+
+    Evaluation-Analysis-of-Vision-Models/
+    ├── assets/
+    ├── configs/
+    │   ├── paths.yaml
+    │   ├── model_params.yaml
+    │   └── experiment.yaml
+    ├── data/
+    │   ├── train/
+    │   ├── val/
+    │   └── test/
+    ├── src/
+    │   ├── config/
+    │   ├── models/
+    │   ├── evaluation/
+    │   ├── perturbations/
+    │   ├── utils/
+    │   └── evaluator.py
+    ├── reports/
+    ├── logs/
+    ├── requirements.txt
+    ├── .gitignore
+    └── README.md
 
 ## ⚡ Usage
 
-This project uses **YAML-based experiment configuration** to ensure
-reproducibility and clean experiment tracking.
-
-### Configure an Experiment
+::: card
+### 🔧 Configure an Experiment
 
     model:
-      name: "EffecientNET B0"
+      name: "efficientnet_b0"
       pretrained: true
 
     evaluation:
@@ -51,25 +102,60 @@ reproducibility and clean experiment tracking.
     perturbations:
       - type: "gaussian_noise"
         severity: 2
+      - type: "motion_blur"
+        severity: 1
 
-### Run the Evaluator
+### ▶️ Run the Evaluator
 
     python src/evaluator.py --config configs/experiment.yaml
-
+:::
 
 ## 🧪 Experiments Checklist
 
--   Baseline Evaluation on clean data
--   Perturbation Testing (noise, blur, contrast)
--   Confidence Calibration (Reliability Diagrams)
--   Out-of-Distribution (OOD) Evaluation
+-   Baseline evaluation on clean data
+-   Noise & blur robustness testing
+-   Confidence calibration (ECE, reliability diagrams)
+-   OOD stress testing
+-   Confusion matrix & per-class breakdown
+-   Failure case inspection
 
-## 🤝 Contributing
+## 📊 Outputs Generated
 
-This is a personal research project, but suggestions and discussions
-around ML evaluation are welcome.
+    reports/
+    ├── metrics.json
+    ├── confusion_matrix.png
+    ├── reliability_diagram.png
+    └── experiment_metadata.json
 
-    git checkout -b feature/AmazingFeature
-    git commit -m "Add some AmazingFeature"
-    git push origin feature/AmazingFeature
+## 📦 Dependencies
 
+    torch
+    torchvision
+    numpy
+    opencv-python
+    scikit-learn
+    matplotlib
+    seaborn
+    pyyaml
+    tqdm
+
+## 🔒 Data & Git Hygiene
+
+    data/
+    checkpoints/
+    logs/
+    reports/
+    *.pt
+    *.pth
+    .env
+    venv/
+    __pycache__/
+
+## 📜 Philosophy
+
+> Accuracy answers *"how often"*\
+> Evaluation answers *"when, where, and why"*
+
+Built as a research playground for understanding model behavior under
+uncertainty.
+:::
