@@ -1,0 +1,85 @@
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# -----------------------------
+# Virtual environments
+# -----------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# -----------------------------
+# OS / Editor
+# -----------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# -----------------------------
+# Logs
+# -----------------------------
+logs/
+*.log
+
+# -----------------------------
+# Data (NEVER commit datasets)
+# -----------------------------
+data/raw/
+data/interim/
+data/processed/
+data/external/
+
+# -----------------------------
+# Models & registries
+# -----------------------------
+model/
+models/
+models/registry/
+*.pt
+*.pth
+*.ckpt
+
+# -----------------------------
+# Reports & figures
+# -----------------------------
+reports/
+reports/**
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# -----------------------------
+# Experiments / outputs
+# -----------------------------
+experiments/
+runs/
+outputs/
+
+# -----------------------------
+# Jupyter
+# -----------------------------
+.ipynb_checkpoints/
+
+# -----------------------------
+# Cache / temp
+# -----------------------------
+.cache/
+tmp/
+temp/
+
+# -----------------------------
+# Credentials (safety)
+# -----------------------------
+*.env
+.env
+.env.*
+secrets.yaml
