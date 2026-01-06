@@ -10,6 +10,7 @@ Responsibilities:
 """
 
 from pathlib import Path
+from PIL import Image
 import json
 import random
 import numpy as np
@@ -114,6 +115,18 @@ def run_experiment(
     logger.info(f"Scenario {scenario_code} | Params {scenario_params}")
 
     # ------------------------------------------------------------
+    # Sample saving setup
+    # ------------------------------------------------------------
+    MAX_SAMPLES_TO_SAVE = 30
+    saved_samples = 5
+
+    samples_dir = exp_dir / "samples"
+    clean_dir = samples_dir / "clean"
+    degraded_dir = samples_dir / "degraded"
+    clean_dir.mkdir(parents=True, exist_ok=True)
+    degraded_dir.mkdir(parents=True, exist_ok=True)
+
+    # ------------------------------------------------------------
     # Load data (IMAGE SPACE)
     # ------------------------------------------------------------
     test_path = get_interim_split_path("test")
@@ -146,17 +159,25 @@ def run_experiment(
         labels = []
 
         for idx in range(start, min(start + batch_size, len(dataset))):
-            img, label = dataset[idx]  # img: uint8 HWC
-            img = apply_scenario(
+            img, label = dataset[idx]  # uint8 HWC
+
+            degraded_img = apply_scenario(
                 img,
                 scenario_fn=scenario_fn,
                 params=scenario_params,
             )
-            imgs_np.append(img)
+
+            # Save sample images (limited, deterministic)
+            if saved_samples < MAX_SAMPLES_TO_SAVE:
+                img_id = f"img_{saved_samples:04d}.png"
+                Image.fromarray(img).save(clean_dir / img_id)
+                Image.fromarray(degraded_img).save(degraded_dir / img_id)
+                saved_samples += 1
+
+            imgs_np.append(degraded_img)
             labels.append(label)
 
-
-        # (N, H, W, C) → (N, C, H, W)
+        # Convert to tensor: (N, H, W, C) → (N, C, H, W)
         imgs_np = np.stack(imgs_np, axis=0)
         imgs = torch.from_numpy(imgs_np).float()
         imgs = imgs.permute(0, 3, 1, 2) / 255.0
@@ -217,9 +238,13 @@ def run_experiment(
 # ---------------------------------------------------------------------
 if __name__ == "__main__":
     run_experiment(
-        scenario_code="B1",
-        scenario_params={"sigma": 1.0},
-        experiment_name="b1_blur_sigma_1.0",
-        family="B",
-        description="Gaussian blur robustness (sigma=1.0)",
+        scenario_code="D3",
+        scenario_params={
+            "gamma": 0.15,
+            "fog_strength": 0.9,
+            "noise_std": 0.12
+        },
+        experiment_name="d_extreme_gamma0.15_fog0.9_noise0.12",
+        family="D",
+        description="extreme robustness gamma=0.15, fog=0.9, noise=0.12",
     )
