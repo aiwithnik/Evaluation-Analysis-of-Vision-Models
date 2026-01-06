@@ -1,4 +1,5 @@
 import logging
+import warnings
 from pathlib import Path
 from datetime import datetime
 
@@ -9,21 +10,10 @@ def setup_logger(
     level: int = logging.INFO,
 ) -> logging.Logger:
     """
-    Create a logger that logs to both console and file.
-
-    Parameters
-    ----------
-    name : str
-        Logger name.
-    log_dir : Path
-        Directory where log file will be saved.
-    level : int
-        Logging level.
-
-    Returns
-    -------
-    logging.Logger
+    Create a logger that logs to both console and file,
+    and captures Python warnings into the log file.
     """
+
     log_dir.mkdir(parents=True, exist_ok=True)
 
     logger = logging.getLogger(name)
@@ -40,17 +30,32 @@ def setup_logger(
         "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
     )
 
+    # -------------------------
     # File handler
+    # -------------------------
     fh = logging.FileHandler(log_file)
     fh.setFormatter(formatter)
     fh.setLevel(level)
 
+    # -------------------------
     # Console handler
+    # -------------------------
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
     ch.setLevel(level)
 
     logger.addHandler(fh)
     logger.addHandler(ch)
+
+    # -------------------------
+    # CAPTURE WARNINGS
+    # -------------------------
+    logging.captureWarnings(True)
+    warnings.simplefilter("always")
+
+    warning_logger = logging.getLogger("py.warnings")
+    warning_logger.addHandler(fh)
+    warning_logger.setLevel(logging.WARNING)
+    warning_logger.propagate = False
 
     return logger
