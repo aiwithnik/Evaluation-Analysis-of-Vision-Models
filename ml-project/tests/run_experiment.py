@@ -244,7 +244,7 @@ if __name__ == "__main__":
             "fog_strength": 0.9,
             "noise_std": 0.12
         },
-        experiment_name="d_extreme_gamma0.15_fog0.9_noise0.12",
+        experiment_name="d3_extreme_gamma0.15_fog0.9_noise0.12",
         family="D",
-        description="extreme robustness gamma=0.15, fog=0.9, noise=0.12",
+        description="D3 extreme collapse {'gamma': 0.15, 'fog_strength': 0.9, 'noise_std': 0.12}",
     )
